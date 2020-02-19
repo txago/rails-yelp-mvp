@@ -1,0 +1,10 @@
+<h2 class="border-bottom py-4 my-4 font-weight-bold">All restaurants</h2>
+
+<% @restaurants.each do |restaurant| %>
+<div class="border-bottom pb-2 mb-4">
+  <h3 class="pb-2 font-weight-bold"><%= link_to restaurant.name, restaurant_path(restaurant), class: 'text-danger' %></h3>
+  <p class="lead">📇 <%= restaurant.address %></p>
+  <p class="lead">☎️ <%= restaurant.phone_number %></p>
+  <p class="lead">🥣 <%= restaurant.category.capitalize() %></p>
+</div>
+<% end %>

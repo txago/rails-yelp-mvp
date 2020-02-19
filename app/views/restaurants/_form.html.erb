@@ -1,0 +1,25 @@
+<%= simple_form_for restaurant do |f|%>
+
+<div class="form-group">
+  <label>🍽 Name</label>
+  <%= f.text_field :name, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+  <label>📇 Address</label>
+  <%= f.text_field :address, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+  <label>☎️ Phone number</label>
+  <%= f.text_field :phone_number, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+  <label>🥣 Category</label>
+  <%= f.select :category, ['chinese', 'italian', 'japanese', 'french', 'belgian'], {}, class: 'form-control' %>
+</div>
+
+<%= f.submit class: 'btn btn-secondary btn-block mb-2' %>
+
+<% end %>

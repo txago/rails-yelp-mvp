@@ -1,0 +1,33 @@
+<h2 class="border-bottom py-4 my-4 font-weight-bold"><%= @restaurant.name %></h2>
+<div class="border-bottom pb-2 mb-4">
+  <p class="lead">📇 <%= @restaurant.address %></p>
+  <p class="lead">☎️ <%= @restaurant.phone_number %></p>
+  <p class="lead">🥣 <%= @restaurant.category.capitalize() %></p>
+</div>
+
+<div class="border-bottom pb-2 mb-4">
+  <h3 class="my-3">Reviews</h3>
+  <% if @restaurant.reviews.count == 0 %>
+    <p>No reviews yet. <%= link_to 'Add the first one.', new_restaurant_review_path(@restaurant) %></p>
+  <% else %>
+  <% @reviews.each do |review| %>
+    <blockquote class="blockquote">
+      <p class="mb-0">“<%= review.content %>”</p>
+    </blockquote>
+      <p class="border-bottom pb-4">
+        <% if review.rating > 0 %>
+        <%= '⭐️' * review.rating %>
+        <% else %>
+        💣
+        <% end %>
+      </p>
+  <% end %>
+    <%= link_to 'Add a new review', new_restaurant_review_path(@restaurant), class: 'btn btn-secondary mt-2 mb-3' %>
+  <% end %>
+</div>
+
+<div class="border-bottom pb-4 mb-3">
+  <%= link_to 'Back to list', restaurants_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Edit restaurant', edit_restaurant_path(@restaurant), class: 'btn btn-secondary' %>
+  <%= link_to 'Delete restaurant', restaurant_path(@restaurant), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+</div>
